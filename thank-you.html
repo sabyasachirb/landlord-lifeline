@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Landlord Lifeline™ – You're In!</title>
+<meta name="description" content="Thank you for joining Landlord Lifeline™ as a Founding Member. Access your starter toolkit and community below.">
+
+<!-- Google Fonts CDN -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@400;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #CC0000;
+    --black: #0A0A0A;
+    --white: #FAFAF8;
+    --offwhite: #F2F0ED;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Barlow', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── ANIMATED BACKGROUND ── */
+  .ty-hero {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 80px 24px 60px;
+    overflow: hidden;
+  }
+
+  .ty-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(204,0,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(204,0,0,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridShift 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gridShift {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(60px,60px); }
+  }
+
+  .ty-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 180px;
+    background: linear-gradient(to bottom, transparent, var(--black));
+    pointer-events: none;
+  }
+
+  /* ── CONFETTI BURST SVG ── */
+  .confetti-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 680px;
+    text-align: center;
+  }
+
+  /* ── CHECKMARK ANIMATION ── */
+  .check-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #CC0000, #880000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-size: 38px;
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+    box-shadow: 0 0 40px rgba(204,0,0,0.35);
+  }
+
+  @keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .ty-badge {
+    display: inline-block;
+    background: rgba(204,0,0,0.2);
+    border: 1px solid rgba(204,0,0,0.5);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--white);
+    padding: 10px 28px;
+    border-radius: 3px;
+    margin-bottom: 24px;
+    animation: fadeUp 0.5s ease 0.3s both;
+  }
+
+  .ty-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 62px);
+    font-weight: 900;
+    line-height: 1.08;
+    color: var(--white);
+    margin-bottom: 14px;
+    animation: fadeUp 0.6s ease 0.4s both;
+  }
+
+  .ty-h1 span { color: var(--red); }
+
+  .ty-tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 16px;
+    animation: fadeUp 0.6s ease 0.5s both;
+  }
+
+  .ty-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.65);
+    max-width: 540px;
+    margin: 0 auto 44px;
+    line-height: 1.75;
+    animation: fadeUp 0.6s ease 0.55s both;
+  }
+
+  .ty-desc strong { color: var(--white); }
+
+  /* ── TOOLKIT CARDS ── */
+  .toolkit-section {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 860px;
+    margin-bottom: 52px;
+    animation: fadeUp 0.7s ease 0.65s both;
+  }
+
+  .toolkit-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .toolkit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .toolkit-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 5px;
+    padding: 22px 18px;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .toolkit-card:hover {
+    border-color: rgba(204,0,0,0.5);
+    background: rgba(204,0,0,0.06);
+    transform: translateY(-3px);
+  }
+
+  .tc-icon {
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .tc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  .tc-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+  }
+
+  .tc-arrow {
+    font-size: 13px;
+    color: var(--red);
+    margin-top: auto;
+    padding-top: 6px;
+  }
+
+  /* ── COMMUNITY INVITE ── */
+  .community-banner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 680px;
+    background: linear-gradient(135deg, rgba(204,0,0,0.18), rgba(204,0,0,0.08));
+    border: 1px solid rgba(204,0,0,0.35);
+    border-radius: 5px;
+    padding: 36px 32px;
+    text-align: center;
+    margin-bottom: 44px;
+    animation: fadeUp 0.7s ease 0.75s both;
+  }
+
+  .community-banner .cb-icon { font-size: 32px; margin-bottom: 10px; }
+
+  .community-banner h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.15;
+  }
+
+  .community-banner p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin-bottom: 22px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-community {
+    display: inline-block;
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 3px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-community:hover {
+    background: #AA0000;
+    transform: translateY(-2px);
+  }
+
+  /* ── WHATS NEXT ── */
+  .next-steps {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 680px;
+    margin-bottom: 52px;
+    animation: fadeUp 0.7s ease 0.85s both;
+  }
+
+  .next-steps h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .next-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .next-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.55;
+  }
+
+  .next-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--white);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── QUOTE ── */
+  .ty-quote {
+    position: relative;
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 700;
+    color: rgba(255,255,255,0.45);
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.7s ease 0.95s both;
+  }
+
+  .ty-quote strong { color: var(--white); font-style: normal; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    border-top: 3px solid var(--red);
+    padding: 28px 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  footer .f-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  footer .f-name span { color: var(--red); }
+
+  footer .f-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  footer .f-back {
+    margin-top: 10px;
+  }
+
+  footer .f-back a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  footer .f-back a:hover { color: var(--red); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .toolkit-grid { grid-template-columns: 1fr; }
+    .community-banner { padding: 24px 18px; }
+    .ty-hero { padding: 60px 18px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="ty-hero">
+
+  <!-- Check / Success Icon -->
+  <div class="check-circle">🎉</div>
+
+  <div class="confetti-wrap">
+    <div class="ty-badge">✅ Founding Member Confirmed</div>
+    <h1 class="ty-h1">You're <span>In.</span><br>Welcome to the Lifeline.</h1>
+    <div class="ty-tagline">"Favor Will Take You Where FICO Won't™"</div>
+    <p class="ty-desc">
+      <strong>Thank you for claiming your Founding Member spot.</strong> You've locked in your rate for life and joined a community of landlords who are serious about winning. Check your inbox — we'll be in touch with your exclusive access details soon.
+    </p>
+  </div>
+
+  <!-- STARTER TOOLKIT LINKS
+  <div class="toolkit-section">
+    <div class="toolkit-label">Your Founding Member Starter Toolkit</div>
+    <div class="toolkit-grid">
+
+      <a href="#" class="toolkit-card" id="toolkit-guide">
+        <div class="tc-icon">📋</div>
+        <div class="tc-title">Landlord Quick-Start Guide</div>
+        <div class="tc-desc">Essential resources every landlord needs from day one — lease templates, screening checklists, and more.</div>
+        <div class="tc-arrow">Download →</div>
+      </a>
+
+      <a href="#" class="toolkit-card" id="toolkit-cashflow">
+        <div class="tc-icon">📊</div>
+        <div class="tc-title">Cashflow Tracker Template</div>
+        <div class="tc-desc">Track income and expenses across all your properties with our simple, powerful spreadsheet.</div>
+        <div class="tc-arrow">Download →</div>
+      </a>
+
+      <a href="#" class="toolkit-card" id="toolkit-eviction">
+        <div class="tc-icon">⚖️</div>
+        <div class="tc-title">Eviction Readiness Checklist</div>
+        <div class="tc-desc">Know exactly what to document and when — protect yourself before you ever need to file.</div>
+        <div class="tc-arrow">Download →</div>
+      </a>
+
+      <a href="#" class="toolkit-card" id="toolkit-funding">
+        <div class="tc-icon">🏛️</div>
+        <div class="tc-title">Funding &amp; Grants Directory</div>
+        <div class="tc-desc">Janet's curated list of landlord-friendly funding sources, grants, and housing programs.</div>
+        <div class="tc-arrow">Download →</div>
+      </a>
+
+    </div>
+  </div> -->
+
+  <!-- Facebook Community link is shared via welcome email only -->
+
+  <!-- WHAT'S NEXT -->
+  <div class="next-steps">
+    <h4>What Happens Next</h4>
+    <ul class="next-list">
+      <li>
+        <div class="next-num">1</div>
+        <div>Check your inbox for a <strong>confirmation email</strong> from Landlord Lifeline™ with your founding member details.</div>
+      </li>
+      <li>
+        <div class="next-num">2</div>
+        <div>Your welcome email includes the <strong>exclusive Facebook Community link</strong> — join to connect with fellow founding members and get early updates from Janet's team.</div>
+      </li>
+      <li>
+        <div class="next-num">3</div>
+        <div>🚀 <strong>The Landlord Lifeline™ app officially launches April 1st, 2025.</strong> As a Founding Member, you'll be first through the door at your locked-in rate.</div>
+      </li>
+      <li>
+        <div class="next-num">4</div>
+        <div>Stay tuned for sneak peeks, beta access invitations, and exclusive pre-launch content between now and <strong>April 1st</strong>.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- QUOTE -->
+  <div class="ty-quote">
+    "You didn't just sign up for an app.<br>
+    You invested in yourself."<br>
+    <strong>— Janet Tonkins, The Cashflow Diva™</strong>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-name">Landlord <span>Lifeline™</span> · The Cashflow Diva™</div>
+  <div class="f-sub">© 2026 The Cashflow Diva LLC · All Rights Reserved</div>
+  <div class="f-back"><a href="index.html">← Back to Home</a></div>
+</footer>
+
+</body>
+</html>
